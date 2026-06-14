@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Work With Us — Hive Break</title>
+  <meta name="description" content="Tell us what you're solving. Hive Break partners with a small roster of established YouTube creators and teams each year — share a few details and we'll come back to you personally." />
+  <meta name="theme-color" content="#000000" />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:title" content="Work With Us — Hive Break" />
+  <meta property="og:description" content="Tell us what you're solving. We'll tell you what it's worth — and whether we're the ones to solve it." />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="hive" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <a class="skip" href="#contact-form">Skip to form</a>
+
+  <!-- ───────────────────────── NAV ───────────────────────── -->
+  <header class="nav" id="nav">
+    <a class="brand" href="index.html" aria-label="Hive Break — home">
+      <img class="brand__logo" src="assets/hivebreak-logo.png" alt="Hive Break" width="52" height="51" />
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html#questions">What we look at</a>
+      <a href="index.html#results">Results</a>
+      <a href="index.html#about">About</a>
+    </nav>
+
+    <a href="index.html" class="btn btn--ghost nav__cta">
+      <span>Back to home</span>
+    </a>
+  </header>
+
+  <main id="main">
+    <section class="contact">
+      <div class="contact__head">
+        <p class="kicker reveal"><span class="kicker__dot"></span>Work with us</p>
+        <h1 class="contact__title reveal">Let's <em>connect</em>.</h1>
+        <p class="contact__lead reveal">We partner with a small number of established creators and teams each year.
+          Share a few details and we'll come back to you personally — usually within two business days.</p>
+      </div>
+
+      <form class="form reveal" id="contact-form" method="post" action="contact-handler.php" novalidate>
+        <!-- honeypot: hidden from people, tempting to bots -->
+        <div class="form__hp" aria-hidden="true">
+          <label>Leave this field empty
+            <input type="text" name="company_website" tabindex="-1" autocomplete="off" />
+          </label>
+        </div>
+
+        <div class="form__grid">
+          <div class="field">
+            <label for="f-name">Full name <span class="req">*</span></label>
+            <input id="f-name" name="name" type="text" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="f-email">Email address <span class="req">*</span></label>
+            <input id="f-email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="f-channel">YouTube channel URL <span class="req">*</span></label>
+            <input id="f-channel" name="channel_url" type="url" required placeholder="https://youtube.com/@yourchannel" />
+          </div>
+          <div class="field">
+            <label for="f-org">Organization / company <span class="opt">(optional)</span></label>
+            <input id="f-org" name="organization" type="text" autocomplete="organization" />
+          </div>
+        </div>
+
+        <fieldset class="field">
+          <legend>What brings you here? <span class="req">*</span></legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="interests[]" value="Growth &amp; Optimization" /><span>Growth &amp; Optimization</span></label>
+            <label class="chip"><input type="checkbox" name="interests[]" value="Brand / Merch" /><span>Brand / Merch</span></label>
+            <label class="chip"><input type="checkbox" name="interests[]" value="FAST / Linear TV" /><span>FAST / Linear TV</span></label>
+            <label class="chip"><input type="checkbox" name="interests[]" value="Something Else" /><span>Something Else</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="f-context">Context for the conversation <span class="hint">(2–4 sentences)</span> <span class="req">*</span></label>
+          <textarea id="f-context" name="context" rows="5" required
+            placeholder="What outcome would make this engagement a home run? Key metrics, timelines, constraints."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="f-links">Links <span class="opt">(optional)</span></label>
+          <input id="f-links" name="links" type="url" placeholder="Deck, portfolio, or Drive/Doc URL" />
+        </div>
+
+        <div class="field consent">
+          <label class="check">
+            <input type="checkbox" name="consent" value="yes" required />
+            <span>I agree to the collection &amp; review of my information per the
+              <a href="privacy.html">privacy policy</a>. <span class="req">*</span></span>
+          </label>
+        </div>
+
+        <div class="form__alert form__alert--error" id="form-alert" role="status" aria-live="polite" hidden></div>
+
+        <div class="form__foot">
+          <button type="submit" class="btn btn--gold btn--lg" data-shine>
+            <span>Submit inquiry</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="form__fine">Enquiries reviewed personally · Always confidential</p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- ───────────────────────── FOOTER ───────────────────────── -->
+  <footer class="footer">
+    <div class="footer__top">
+      <a class="brand" href="index.html" aria-label="Hive Break — home">
+        <img class="brand__logo" src="assets/hivebreak-logo.png" alt="Hive Break" width="48" height="47" />
+      </a>
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="index.html#questions">What we look at</a>
+        <a href="index.html#results">Results</a>
+        <a href="index.html#about">About</a>
+        <a href="contact.html">Get in touch</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p>© <span id="year"></span> Hive Break. The growth partner for YouTube's top creators.</p>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+
+  <!-- contact form: progressive enhancement (works without JS via PHP redirect) -->
+  <script>
+    (function () {
+      var form = document.getElementById('contact-form');
+      var alertBox = document.getElementById('form-alert');
+      if (!form) return;
+
+      // Surface the no-JS PHP redirect result (?sent=1 / ?error=...) if present.
+      var params = new URLSearchParams(location.search);
+      if (params.get('sent')) {
+        showAlert('success', "Thank you — your inquiry is in. We'll be in touch personally, usually within two business days.");
+        form.reset();
+      } else if (params.get('error')) {
+        showAlert('error', params.get('error'));
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+
+        var btn = form.querySelector('button[type=submit]');
+        btn.disabled = true; btn.classList.add('is-loading');
+        if (alertBox) alertBox.hidden = true;
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json', 'X-Requested-With': 'fetch' }
+        })
+        .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, data: d }; }); })
+        .then(function (r) {
+          if (r.ok && r.data && r.data.ok) {
+            form.reset();
+            showAlert('success', r.data.message || "Thank you — your inquiry is in. We'll be in touch personally.");
+          } else {
+            showAlert('error', (r.data && r.data.error) || "Something went wrong. Please email info@hivebreak.com directly.");
+          }
+        })
+        .catch(function () {
+          showAlert('error', "Couldn't reach the server. Please email info@hivebreak.com directly.");
+        })
+        .finally(function () {
+          btn.disabled = false; btn.classList.remove('is-loading');
+        });
+      });
+
+      function showAlert(type, msg) {
+        if (!alertBox) return;
+        alertBox.className = 'form__alert form__alert--' + type;
+        alertBox.textContent = msg;
+        alertBox.hidden = false;
+        alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    })();
+  </script>
+</body>
+</html>

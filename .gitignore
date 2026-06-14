@@ -1,0 +1,8 @@
+# Server-side secrets — never commit. Holds the Brevo API key.
+config.php
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.log
+.gstack/
