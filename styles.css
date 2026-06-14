@@ -95,6 +95,9 @@ img,svg{ display:block }
   width:7px; height:7px; border-radius:50%; background:var(--gold-2);
   box-shadow:0 0 0 4px rgba(222,163,49,.16); flex:none;
 }
+/* brand name highlighted within a kicker eyebrow */
+.kicker__brand{ color:var(--gold-1); font-weight:700 }
+.kicker__sep{ color:var(--faint); font-weight:400 }
 
 /* ───────────── Buttons ───────────── */
 .btn{
@@ -159,11 +162,14 @@ img,svg{ display:block }
 .brand:hover .brand__mark::after{ animation:animotion-btnShine .85s ease-in-out }
 
 .brand__word{
-  font-weight:800; letter-spacing:.04em; font-size:18px; color:var(--cream);
+  font-weight:800; letter-spacing:.02em; font-size:21px; line-height:1;
+  color:var(--cream); white-space:nowrap;
 }
+.nav.scrolled .brand__word{ font-size:20px }
+.footer .brand__word{ font-size:20px }
 /* enhanced wordmark — BREAK keeps its gold, gains a metallic shimmer on hover (Animotion T02) */
 .brand__word span{
-  background:linear-gradient(90deg, #E07B00 0%, #FFE7A0 50%, #E07B00 100%);
+  background:linear-gradient(90deg, #DEA331 0%, #FFF188 50%, #D89319 100%);
   background-size:220% 100%; background-position:0% center;
   -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
 }
