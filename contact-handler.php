@@ -50,10 +50,16 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
     respond(false, 'Method not allowed.', 405);
 }
 
-$configPath = __DIR__ . '/config.php';
-if (!is_file($configPath)) {
+/* The Brevo key lives in config.php. Prefer a copy ONE LEVEL ABOVE the web
+   root (outside the git checkout) so a redeploy can't wipe it and it can never
+   be served as a file. Fall back to an in-folder copy for local development. */
+$configPath = null;
+foreach ([__DIR__ . '/../config.php', __DIR__ . '/config.php'] as $candidate) {
+    if (is_file($candidate)) { $configPath = $candidate; break; }
+}
+if ($configPath === null) {
     // Misconfiguration on the server, not the visitor's fault.
-    error_log('contact-handler: config.php missing');
+    error_log('contact-handler: config.php missing (looked in ../ and ./)');
     respond(false, 'The form is not configured yet. Please email info@hivebreak.com.', 500);
 }
 $config = require $configPath;
