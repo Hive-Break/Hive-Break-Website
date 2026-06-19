@@ -80,7 +80,7 @@ $interests = array_values(array_filter(array_map('clean', $interests)));
 $errors = [];
 if ($name === '')                                          { $errors[] = 'your name'; }
 if (!filter_var($email, FILTER_VALIDATE_EMAIL))            { $errors[] = 'a valid email'; }
-if ($channel === '' || !filter_var($channel, FILTER_VALIDATE_URL)) { $errors[] = 'your YouTube channel URL'; }
+if ($channel !== '' && !filter_var($channel, FILTER_VALIDATE_URL)) { $errors[] = 'a valid YouTube channel URL (or leave it blank)'; }
 if (empty($interests))                                     { $errors[] = 'what brings you here'; }
 if ($context === '')                                       { $errors[] = 'some context'; }
 if (!$consent)                                             { $errors[] = 'consent to the privacy policy'; }
@@ -100,7 +100,7 @@ $interestsStr = implode(', ', $interests);
 $rows = [
     ['Name',          $name],
     ['Email',         $email],
-    ['YouTube',       $channel],
+    ['YouTube',       $channel !== '' ? $channel : '—'],
     ['Organization',  $org !== '' ? $org : '—'],
     ['Interested in', $interestsStr],
     ['Links',         $links !== '' ? $links : '—'],
